@@ -71,7 +71,7 @@ void MainWindow::showEvent(QShowEvent *)
     *m_screenPicture = pscreen->grabWindow(QApplication::desktop()->winId(), 0, 0, desktopSize.width(), desktopSize.height());
 
     QPixmap pix(desktopSize.width(), desktopSize.height());
-    pix.fill((QColor(0, 0, 0, 120)));
+    pix.fill((QColor(0, 0, 0, 150)));
     backgroundPicture = new QPixmap(*m_screenPicture);
     QPainter painter(backgroundPicture);
     painter.drawPixmap(0, 0, pix);
@@ -176,4 +176,12 @@ void MainWindow::slot_saveFullScreen()
     m_screenPicture->save(getSaveFileName(), "png");
     this->hide();
     clearScreenCaptureInfo();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape){
+        this->hide();
+        clearScreenCaptureInfo();
+    }
 }
