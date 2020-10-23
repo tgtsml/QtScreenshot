@@ -24,3 +24,4 @@ DESTDIR = $$PWD/bin
 
 RESOURCES += \
     res.qrc
+
